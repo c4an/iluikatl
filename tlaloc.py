@@ -19,8 +19,9 @@ def github_list(user):
         stream = os.system(f'docker run --rm --name gitleaks zricethezav/gitleaks -v -r {repo}')
         #output = stream.read()
         #print(output)
-def github_token_test(username,token):
-	repos_url = 'https://api.github.com/usertesting/repos'
+
+def github_token_test(username,token,repo):
+	repos_url = repo
 
 	# create a re-usable session object with the user creds in-built
 	gh_session = requests.Session()
@@ -33,7 +34,15 @@ def github_token_test(username,token):
 	for repo in repos:
 	    print(repo['name'])
 
-
+def github_get_users(repo)
+	r = requests.get(f"https://api.github.com/users/{user}/repos")
+	data = json.loads(r.text)
+	#print(data)
+    for repos in data:
+        repo=(repos['html_url'])
+        stream = os.system(f'docker run --rm --name gitleaks zricethezav/gitleaks -v -r {repo}')
+        #output = stream.read()
+        #print(output)
 
 def run():
     parser = argparse.ArgumentParser()
